@@ -8,17 +8,16 @@
 #include "processor.h"
 #include "factory.h"
 
-using namespace reflect;
-
-class Reader : public Processor {
-private:
+namespace reflect {
+    class Reader : public Processor {
+    private:
     GETCLASSNAME("Reader");
-public:
-    Reader() {};
+    public:
+        Reader() {};
 
-    ~Reader() {};
+        ~Reader() {};
 
-    int Process();
-};
-
+        int Process();
+    };
+}
 #endif //CPPSTUDY_READER_H

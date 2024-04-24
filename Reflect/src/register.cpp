@@ -3,19 +3,21 @@
 //
 #include "../include/register.h"
 
-Register::Register() {
-    pfactory = new Factory();
-}
+namespace reflect {
+    Register::Register() {
+        pfactory = new Factory();
+    }
 
-Register::~Register() {
-    if (pfactory){
-        delete pfactory;
-        pfactory = nullptr;
+    Register::~Register() {
+        if (pfactory) {
+            delete pfactory;
+            pfactory = nullptr;
+        }
+    }
+
+    Factory *Register::registerFunction() {
+        REGISTER(Reader::ClassName(), new Reader())
+        REGISTER(Writer::ClassName(), new Writer())
+        return pfactory;
     }
 }
-
-void Register::registers() {
-    REGISTER(Reader::ClassName(),new Reader())
-    REGISTER(Writer::ClassName(),new Writer())
-}
-

@@ -9,20 +9,20 @@
 #include "processor.h"
 #include "reader.h"
 #include "writer.h"
-using namespace reflect;
+
+namespace reflect {
+    class Register {
+    private:
+        Factory *pfactory;
+    public:
+        Register();
+
+        ~Register();
+
+        Factory* registerFunction();
+    };
 
 #define REGISTER(str, pt) pfactory->Register(str, pt);
 
-class Register {
-private:
-    Factory *pfactory;
-public:
-    Register();
-
-    ~Register();
-
-    void registers();
-};
-
-
+}
 #endif //CPPSTUDY_REGISTER_H

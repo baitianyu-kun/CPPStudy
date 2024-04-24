@@ -3,8 +3,9 @@
 //
 #include "../include/writer.h"
 
-int Writer::Process() {
-    cout<<"This is writer."<<endl;
-    return 0;
+namespace reflect {
+    int Writer::Process() {
+        cout << "This is writer." << endl;
+        return 0;
+    }
 }
-

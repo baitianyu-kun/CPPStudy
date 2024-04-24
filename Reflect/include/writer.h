@@ -8,17 +8,17 @@
 #include "processor.h"
 #include "factory.h"
 
-using namespace reflect;
 
-class Writer : public Processor {
-private:
-GETCLASSNAME("Writer");
-public:
-    Writer() {};
+namespace reflect {
+    class Writer : public Processor {
+    private:
+    GETCLASSNAME("Writer");
+    public:
+        Writer() {};
 
-    ~Writer() {};
+        ~Writer() {};
 
-    int Process();
-};
-
+        int Process();
+    };
+}
 #endif //CPPSTUDY_WRITER_H
