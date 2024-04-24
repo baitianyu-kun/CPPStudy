@@ -4,14 +4,14 @@ project(CPPStudy)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(CPPStudy
-        Reflect/include/processor.h
-        Reflect/src/factory.cpp
-        Reflect/include/factory.h
-        Reflect/include/reader.h
-        Reflect/src/reader.cpp
-        Reflect/include/writer.h
-        Reflect/src/writer.cpp
-        Reflect/include/register.h
-        Reflect/src/register.cpp
-        Reflect/src/test.cpp
+        ReflectUniquePtr/include/processor.h
+        ReflectUniquePtr/src/factory.cpp
+        ReflectUniquePtr/include/factory.h
+        ReflectUniquePtr/include/reader.h
+        ReflectUniquePtr/src/reader.cpp
+        ReflectUniquePtr/include/writer.h
+        ReflectUniquePtr/src/writer.cpp
+        ReflectUniquePtr/include/register.h
+        ReflectUniquePtr/src/register.cpp
+        ReflectUniquePtr/src/test.cpp
 )

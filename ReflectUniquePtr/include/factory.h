@@ -8,11 +8,13 @@
 #include "processor.h"
 #include "iostream"
 #include "unordered_map"
+#include "memory"
 
 using std::string;
 using std::unordered_map;
 using std::cout;
 using std::endl;
+using std::unique_ptr;
 
 namespace reflect {
 /**
@@ -20,8 +22,9 @@ namespace reflect {
  */
     class Factory {
     private:
-        unordered_map<string, Processor *> class_maps;
-        unordered_map<string, Processor *>::iterator maps_iter;
+        unordered_map<string,unique_ptr<Processor>> class_maps;
+        unordered_map<string,unique_ptr<Processor>>::iterator  maps_iter;
+
     public:
         Factory() {
             class_maps.clear();
