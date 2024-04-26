@@ -15,3 +15,6 @@ add_executable(CPPStudy
         ReflectUniquePtr/src/register.cpp
         ReflectUniquePtr/src/test.cpp
 )
+
+add_executable(test_big_short BigLittleDian/test_big_short.cpp)
+add_executable(test_string_char StringChar/test_string_char.cpp)
