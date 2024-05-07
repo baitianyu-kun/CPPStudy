@@ -19,3 +19,4 @@ add_executable(CPPStudy
 add_executable(test_big_short BigLittleDian/test_big_short.cpp)
 add_executable(test_string_char StringChar/test_string_char.cpp)
 add_executable(test_struct StructClass/test_struct.cpp)
+add_executable(test_sizeof StringChar/test_sizeof.cpp)
