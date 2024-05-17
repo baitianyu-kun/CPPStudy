@@ -16,11 +16,8 @@ add_executable(CPPStudy
         ReflectUniquePtr/src/test.cpp
 )
 
-add_executable(test_big_short BigLittleDian/test_big_short.cpp)
-add_executable(test_string_char StringChar/test_string_char.cpp)
-add_executable(test_struct StructClass/test_struct.cpp)
-add_executable(test_sizeof StringChar/test_sizeof.cpp)
-add_executable(FatTest SimpleFactory/FatTest.cpp)
-add_executable(test_while StructClass/test_while.cpp)
-add_executable(test_enum StringChar/test_enum.cpp)
-add_executable(test_ptr test_ptr.cpp)
+add_executable(BaseController WinterFrame/Controller/BaseController.cpp)
+add_executable(stdfuntion_test StdSomething/stdfuntion_test.cpp)
+add_executable(test_pathfunction WinterFrame/Controller/test_pathfunction.cpp)
+add_executable(BaseController_gt WinterFrame/Controller/BaseController_gt.cpp)
+add_executable(test_static_vector VectorTest/test_static_vector.cpp)
