@@ -1,0 +1,57 @@
+//
+// Created by 白天宇 on 2024/5/22.
+//
+#include "kernel/types.h"
+#include "user/user.h"
+
+#define BUFF_SIZE 2
+
+int main(int argc, char *argv[]) {
+
+    char *ball = "p";
+    int pipefd_f_s[2];
+    int pipefd_s_f[2];
+    int ret = pipe(pipefd_f_s);
+    if (ret < 0) {
+        fprintf(2, "create pipefd_f_s failed\n");
+    }
+    ret = pipe(pipefd_s_f);
+    if (ret < 0) {
+        fprintf(2, "create pipefd_s_f failed\n");
+    }
+
+    int pid = fork();
+    if (pid > 0) {
+        // farther process
+        // close write, only read
+        close(pipefd_f_s[1]);
+        // close read, only write
+        close(pipefd_s_f[0]);
+        // read
+        char buf[BUFF_SIZE];
+        memset(buf, 0, BUFF_SIZE);
+        while (1) {
+            read(pipefd_f_s[0], buf, BUFF_SIZE);
+            fprintf(2, "%d: received pong\n", getpid());
+            write(pipefd_s_f[1], ball, strlen(ball));
+            break;
+        }
+    } else if (pid == 0) {
+        // child process
+        // close read, only write
+        close(pipefd_f_s[0]);
+        // close write, only read
+        close(pipefd_s_f[1]);
+        char buf[BUFF_SIZE];
+        memset(buf, 0, BUFF_SIZE);
+        while (1) {
+            write(pipefd_f_s[1], ball, strlen(ball));
+            read(pipefd_s_f[0], buf, BUFF_SIZE);
+            fprintf(2, "%d: received ping\n", getpid());
+            break;
+        }
+    } else {
+        fprintf(2, "fork error\n");
+    }
+    return 0;
+}

@@ -1,0 +1,63 @@
+//
+// Created by 白天宇 on 2024/5/24.
+//
+#include "kernel/types.h"
+#include "kernel/fcntl.h"
+#include "user/user.h"
+
+#define buf_size 34
+
+void fork_and_remove(int n, int *nums) {
+    // let num % n == 0
+    // 先处理完再发送，要不然子进程执行完了父进程还没遍历完
+//    int cur_size = 0;
+//    int cur_arr[buf_size];
+//    for (int i = 0, j = 0; i < buf_size; ++i) {
+//        if (nums[i] % n != 0) {
+//            cur_arr[j] = nums[i];
+//            j++;
+////            cur_size = j;
+//        }
+//    }
+
+    int pid = fork();
+    int pipefd[2];
+    int ret = pipe(pipefd);
+    if (ret < 0) {
+        fprintf(2, "create pipe failed\n");
+    }
+    if (pid > 0) {
+        // farther things, remove and write nums to next son
+        // close read, only write
+        close(pipefd[0]);
+        int len = write(pipefd[1], nums, buf_size);
+        printf("send len: %d\n",len);
+    } else if (pid == 0) {
+        // child things, read and reuse this func
+        // close write, only read
+        close(pipefd[1]);
+        int buff[buf_size];
+        memset(buff, 0, buf_size);
+        read(pipefd[0], buff, buf_size);
+    } else {
+        // error things
+    }
+}
+
+int main(int argc, char *argv[]) {
+
+    int nums[buf_size];
+    for (int i = 0, j = 2; i < buf_size; ++i, j++) {
+        nums[i] = j;
+    }
+
+    int pipefd[2];
+    int ret = pipe(pipefd);
+    if (ret < 0) {
+        fprintf(2, "create pipe error\n");
+    }
+
+    fork_and_remove(2, nums);
+
+    return 0;
+}
