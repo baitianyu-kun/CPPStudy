@@ -17,8 +17,8 @@ set(CMAKE_CXX_STANDARD 17)
 #)
 
 add_executable(ORSet
-        CMU/orset.cpp
-        CMU/orset.h
+        CMU/orset.txt
+        CMU/orset.h.txt
 )
 
 add_executable(BaseController WinterFrame/Controller/BaseController.cpp)
