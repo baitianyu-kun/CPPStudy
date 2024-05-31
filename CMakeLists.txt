@@ -16,10 +16,6 @@ set(CMAKE_CXX_STANDARD 17)
 #        ReflectUniquePtr/src/test.cpp
 #)
 
-add_executable(ORSet
-        CMU/orset.txt
-        CMU/orset.h.txt
-)
 
 add_executable(BaseController WinterFrame/Controller/BaseController.cpp)
 add_executable(stdfuntion_test StdSomething/stdfuntion_test.cpp)
@@ -34,3 +30,9 @@ add_executable(MakeTrie Trie/MakeTrie.cpp)
 add_executable(unorderedmap_test Trie/unorderedmap_test.cpp)
 add_executable(move_test CMU/move_test.cpp)
 add_executable(move_test2 CMU/move_test2.cpp)
+add_executable(test_lowerupper StringChar/test_lowerupper.cpp)
+add_executable(LRU_146 LRU/LRU_146.cpp)
+add_executable(unorderedmaps_test LRU/unorderedmaps_test.cpp)
+add_executable(LRU_1462 LRU/LRU_1462.cpp)
+add_executable(LRU3 LRU/LRU3.cpp)
+add_executable(LRU_1462_2 LRU/LRU_1462_2.cpp)
